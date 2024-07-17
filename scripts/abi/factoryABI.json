@@ -1,0 +1,1263 @@
+[
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "AddressIsZero",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CallerIsNotAPool",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "EmptyLogic",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "PlatformIsNotInTheWhitelist",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TokenIsNotInTheWhitelist",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "version",
+          "type": "uint8"
+        }
+      ],
+      "name": "Initialized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "personalPool",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "creator",
+          "type": "address"
+        }
+      ],
+      "name": "NewPersonalPool",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "pool",
+          "type": "address"
+        }
+      ],
+      "name": "NewPool",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "poolContract",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "eventName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "eventParams",
+          "type": "bytes"
+        }
+      ],
+      "name": "PoolContractEvent",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "baseUri",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address[]",
+              "name": "supportedAssets",
+              "type": "address[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "supportedPlatforms",
+              "type": "address[]"
+            }
+          ],
+          "internalType": "struct IFactory.PersonalPool",
+          "name": "_personalPoolParams",
+          "type": "tuple"
+        }
+      ],
+      "name": "createPersonalPool",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "privacyStatus",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "published",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint32",
+              "name": "lockPeriodInSec",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "frequency",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint24",
+              "name": "feePercentage",
+              "type": "uint24"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "symbol",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "feeCollector",
+              "type": "address"
+            },
+            {
+              "internalType": "address[]",
+              "name": "supportedAssets",
+              "type": "address[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "supportedPlatforms",
+              "type": "address[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "whitelistedUsers",
+              "type": "address[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "redemptionSupportedAssets",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "risk",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "minInvestmentAmount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxInvestmentAmount",
+              "type": "uint256"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "bool",
+                  "name": "isFixedAmount",
+                  "type": "bool"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "feeAmount",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct IPool.Fee",
+              "name": "entryFee",
+              "type": "tuple"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "bool",
+                  "name": "isFixedAmount",
+                  "type": "bool"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "feeAmount",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct IPool.Fee",
+              "name": "exitFee",
+              "type": "tuple"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "bool",
+                  "name": "isAutoSwapOn",
+                  "type": "bool"
+                },
+                {
+                  "internalType": "address",
+                  "name": "autoSwapToken",
+                  "type": "address"
+                }
+              ],
+              "internalType": "struct IPool.AutoSwap",
+              "name": "autoSwap",
+              "type": "tuple"
+            }
+          ],
+          "internalType": "struct IFactory.Pool",
+          "name": "_poolParams",
+          "type": "tuple"
+        }
+      ],
+      "name": "createPool",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "dexConvert",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "dexEstimate",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "futuresLibrary",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "eventName",
+          "type": "string"
+        },
+        {
+          "internalType": "bytes",
+          "name": "eventParams",
+          "type": "bytes"
+        }
+      ],
+      "name": "generatePoolEvent",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getBaseUri",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getDexLibraryData",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "storageLibContract",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "estimateContract",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "convertContract",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getFuturesLib",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getHorizonProtocolLib",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getLendBorrowLibraryAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPersonalPoolAddresses",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPoolAddresses",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPoolLibraryAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "offset",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "limit",
+          "type": "uint256"
+        }
+      ],
+      "name": "getPools",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "poolAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "manager",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "symbol",
+              "type": "string"
+            },
+            {
+              "internalType": "bool",
+              "name": "privacyStatus",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "published",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isClose",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "risk",
+              "type": "uint256"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "assetAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "balance",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "enum IPool.AssetType",
+                  "name": "assetType",
+                  "type": "uint8"
+                }
+              ],
+              "internalType": "struct IPool.AssetBalances[]",
+              "name": "assetsBalances",
+              "type": "tuple[]"
+            },
+            {
+              "internalType": "uint32",
+              "name": "lockPeriodInSec",
+              "type": "uint32"
+            }
+          ],
+          "internalType": "struct IPool.PoolDetails[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "lpAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getRouterAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getTreasuryAddressAndFee",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint24",
+          "name": "",
+          "type": "uint24"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getUniAddresses",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "getUserPersonalPoolAddresses",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getVenusLibraryData",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getWhitelistedAssets",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getWhitelistedPlatforms",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "horizonProtocolLib",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "implementation",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint24",
+              "name": "fee",
+              "type": "uint24"
+            },
+            {
+              "internalType": "address",
+              "name": "treasuryFund",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "storageContract",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "dexConvert",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "dexEstimate",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "poolLogic",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "poolLibrary",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "personalPoolLogic",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "lendBorrowLibrary",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "futuresLibrary",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "networkNativeToken",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "uniswapV2In",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "uniswapV2Out",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "venusContract",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "horizonProtocolLib",
+              "type": "address"
+            },
+            {
+              "internalType": "address[]",
+              "name": "whitelistedAssets",
+              "type": "address[]"
+            },
+            {
+              "internalType": "address[]",
+              "name": "whitelistedPlatforms",
+              "type": "address[]"
+            },
+            {
+              "internalType": "string",
+              "name": "baseUri",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct IFactory.InitialParams",
+          "name": "params",
+          "type": "tuple"
+        }
+      ],
+      "name": "initialize",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "lib",
+          "type": "address"
+        }
+      ],
+      "name": "isLibrarySupported",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "platform",
+          "type": "address"
+        }
+      ],
+      "name": "isPlatformSupported",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "lendBorrowLibrary",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "assets",
+          "type": "address[]"
+        },
+        {
+          "internalType": "bool",
+          "name": "action",
+          "type": "bool"
+        }
+      ],
+      "name": "manageAssetsToWhitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "libraries",
+          "type": "address[]"
+        },
+        {
+          "internalType": "bool",
+          "name": "action",
+          "type": "bool"
+        }
+      ],
+      "name": "manageLibrariesToWhitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "platforms",
+          "type": "address[]"
+        },
+        {
+          "internalType": "bool",
+          "name": "action",
+          "type": "bool"
+        }
+      ],
+      "name": "managePlatformsToWhitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "networkNativeToken",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "personalPoolLogic",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "poolLibrary",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "poolLogic",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "lpAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "routerAddress",
+          "type": "address"
+        }
+      ],
+      "name": "saveLiquidityToRouterAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "newBaseUri",
+          "type": "string"
+        }
+      ],
+      "name": "setBaseUri",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_storageContract",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_dexChange",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_dexEstimate",
+          "type": "address"
+        }
+      ],
+      "name": "setDexLibs",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newLib",
+          "type": "address"
+        }
+      ],
+      "name": "setFuturesLib",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newLib",
+          "type": "address"
+        }
+      ],
+      "name": "setHorizonProtocolLib",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newLib",
+          "type": "address"
+        }
+      ],
+      "name": "setLendBorrowLib",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_personalPoolLogic",
+          "type": "address"
+        }
+      ],
+      "name": "setPersonalPoolLogic",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newPoolLib",
+          "type": "address"
+        }
+      ],
+      "name": "setPoolLibrary",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_poolLogic",
+          "type": "address"
+        }
+      ],
+      "name": "setPoolLogic",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newTreasuryFund",
+          "type": "address"
+        },
+        {
+          "internalType": "uint24",
+          "name": "newFee",
+          "type": "uint24"
+        }
+      ],
+      "name": "setTreasuryFundAndFee",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_uniswapV2In",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_uniswapV2Out",
+          "type": "address"
+        }
+      ],
+      "name": "setUniAddresses",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_venusContract",
+          "type": "address"
+        }
+      ],
+      "name": "setVenusLibs",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "storageContract",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "systemFee",
+      "outputs": [
+        {
+          "internalType": "uint24",
+          "name": "",
+          "type": "uint24"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "treasuryFund",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "uniswapV2In",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "uniswapV2Out",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "venusContract",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]

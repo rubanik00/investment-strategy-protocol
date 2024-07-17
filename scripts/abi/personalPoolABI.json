@@ -1,0 +1,571 @@
+[
+      {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "inputs": [],
+        "name": "CallerIsNotManager",
+        "type": "error"
+      },
+      {
+        "inputs": [],
+        "name": "InsufficientFunds",
+        "type": "error"
+      },
+      {
+        "inputs": [],
+        "name": "NotSupportedToken",
+        "type": "error"
+      },
+      {
+        "inputs": [],
+        "name": "PooIsClose",
+        "type": "error"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint8",
+            "name": "version",
+            "type": "uint8"
+          }
+        ],
+        "name": "Initialized",
+        "type": "event"
+      },
+      {
+        "inputs": [],
+        "name": "USDT_ADDRESS",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "name": "analytics",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "investedInUSD",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "withdrawnInUSD",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "assetsUnderManagement",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "assetAddress",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "balance",
+                "type": "uint256"
+              },
+              {
+                "internalType": "enum IPool.AssetType",
+                "name": "assetType",
+                "type": "uint8"
+              }
+            ],
+            "internalType": "struct IPool.AssetBalances[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "pairAddress",
+            "type": "address"
+          }
+        ],
+        "name": "checkUnderlyingTokens",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "closePool",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "target",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes",
+                "name": "callData",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct IPool.Call[]",
+            "name": "calls",
+            "type": "tuple[]"
+          }
+        ],
+        "name": "directCallStrategy",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "blockNumber",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes[]",
+            "name": "returnData",
+            "type": "bytes[]"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "fromToken",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "pairAddress",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "minReceiveAmount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "exchangeRouterAddress",
+                "type": "address"
+              },
+              {
+                "components": [
+                  {
+                    "internalType": "address",
+                    "name": "fromToken",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "address",
+                    "name": "toToken",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "address[]",
+                    "name": "routers",
+                    "type": "address[]"
+                  },
+                  {
+                    "internalType": "address[][]",
+                    "name": "paths",
+                    "type": "address[][]"
+                  }
+                ],
+                "internalType": "struct IUniswapV2In.SwapOptions[]",
+                "name": "swapOptions",
+                "type": "tuple[]"
+              }
+            ],
+            "internalType": "struct IPersonalPool.EnterParams",
+            "name": "params",
+            "type": "tuple"
+          }
+        ],
+        "name": "enter",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "toToken",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "pairAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "lpAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "minReceiveAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "exchangeRouterAddress",
+            "type": "address"
+          }
+        ],
+        "name": "exit",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getFactoryAddress",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getPlaceOrderResponses",
+        "outputs": [
+          {
+            "internalType": "bytes[]",
+            "name": "",
+            "type": "bytes[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getSupportLiquidityPairs",
+        "outputs": [
+          {
+            "internalType": "address[]",
+            "name": "",
+            "type": "address[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getSupportedAssetsAndPlatforms",
+        "outputs": [
+          {
+            "internalType": "address[]",
+            "name": "",
+            "type": "address[]"
+          },
+          {
+            "internalType": "address[]",
+            "name": "",
+            "type": "address[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "manager",
+                "type": "address"
+              },
+              {
+                "internalType": "address[]",
+                "name": "supportedAssets",
+                "type": "address[]"
+              },
+              {
+                "internalType": "address[]",
+                "name": "supportedPlatforms",
+                "type": "address[]"
+              }
+            ],
+            "internalType": "struct IPersonalPool.PersonalPoolParams",
+            "name": "poolParams",
+            "type": "tuple"
+          }
+        ],
+        "name": "initialize",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "investAmount",
+            "type": "uint256"
+          }
+        ],
+        "name": "invest",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "name": "investorLockPeriod",
+        "outputs": [
+          {
+            "internalType": "uint32",
+            "name": "",
+            "type": "uint32"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "asset",
+            "type": "address"
+          }
+        ],
+        "name": "isSupportedAsset",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "lib",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes",
+            "name": "data",
+            "type": "bytes"
+          }
+        ],
+        "name": "libraryCall",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "placeOrderResponses",
+        "outputs": [
+          {
+            "internalType": "bytes",
+            "name": "",
+            "type": "bytes"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "poolData",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "isClose",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "directCallAllowed",
+            "type": "bool"
+          },
+          {
+            "internalType": "address",
+            "name": "manager",
+            "type": "address"
+          },
+          {
+            "internalType": "contract IFactory",
+            "name": "factory",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "poolInfo",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "poolAddress",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "manager",
+                "type": "address"
+              },
+              {
+                "internalType": "bool",
+                "name": "isClose",
+                "type": "bool"
+              },
+              {
+                "internalType": "uint256",
+                "name": "risk",
+                "type": "uint256"
+              },
+              {
+                "components": [
+                  {
+                    "internalType": "address",
+                    "name": "assetAddress",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "balance",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "enum IPool.AssetType",
+                    "name": "assetType",
+                    "type": "uint8"
+                  }
+                ],
+                "internalType": "struct IPool.AssetBalances[]",
+                "name": "assetsBalances",
+                "type": "tuple[]"
+              }
+            ],
+            "internalType": "struct IPersonalPool.PersonalPoolDetails",
+            "name": "",
+            "type": "tuple"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bool",
+            "name": "action",
+            "type": "bool"
+          }
+        ],
+        "name": "setDirectCallAllowance",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "withdrawAmount",
+            "type": "uint256"
+          }
+        ],
+        "name": "withdraw",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+      },
+      {
+        "stateMutability": "payable",
+        "type": "receive"
+      }
+]
+    
+  
